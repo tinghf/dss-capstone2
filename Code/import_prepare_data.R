@@ -77,9 +77,9 @@ load("twitter.RData")
 # base on the computation resource use in training, I sample 10k for each news/blogs,
 # and double that on twitters, as for phone texting twitter seems to mimic the behavior better
 # so I give it a heavior weight in sampling
-sample_blogs   <- sample(blogs, 10000)
-sample_news    <- sample(news, 10000)
-sample_twitter <- sample(twitter, 20000)
+sample_blogs   <- sample(blogs, 1000)
+sample_news    <- sample(news, 1000)
+sample_twitter <- sample(twitter, 2000)
 
 # save samples
 save(sample_blogs, sample_news, sample_twitter, file= "sample_data.RData")
