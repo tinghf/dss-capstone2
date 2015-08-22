@@ -17,29 +17,57 @@ trigram_token <- function(x) NGramTokenizer(x, Weka_control(min = n, max = n))
 # check length function
 length_is <- function(n) function(x) length(x)==n
 
-# contruct single corpus from sample data
+# contruct single corpus from all 3 sample, and perform data cleaing
+# - remove whitespaces
+# - change all words to lower case
+# - remove punctuation
+# - remove numbers
+# - profanity filtering
+
+# profanity filtering base on
+# https://github.com/MauriceButler/badwords/blob/master/array.js
+con <- file("badwords.txt", "r")
+pfVector <- VectorSource(con)
+
 vc_blogs <-
   sample_blogs %>%
   data.frame() %>%
   DataframeSource() %>%
   VCorpus %>%
-  tm_map( stripWhitespace )
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>%  
+  tm_map(stripWhitespace) %>%  
+  tm_map(removeWords, pfVector)
 
 vc_news <-
   sample_news %>%
   data.frame() %>%
   DataframeSource() %>%
   VCorpus %>%
-  tm_map( stripWhitespace )
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>%  
+  tm_map(stripWhitespace) %>%  
+  tm_map(removeWords, pfVector)
 
 vc_twitter <-
   sample_twitter %>%
   data.frame() %>%
   DataframeSource() %>%
   VCorpus %>%
-  tm_map( stripWhitespace )
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>%  
+  tm_map(stripWhitespace) %>%  
+  tm_map(removeWords, pfVector)
+
+close(con)
+rm(con)
 
 vc_all <- c(vc_blogs, vc_news, vc_twitter)
+
+
 
 # frequency unigrams
 tdm_unigram <-
