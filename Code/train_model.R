@@ -7,7 +7,7 @@ load("df_trigram.RData")
 
 # e1071 package
 tri_naiveBayes <- 
-  naiveBayes( Y ~ X1 + X2 ,
+  naiveBayes( Y ~ X1 + X2  ,
               df_trigram )
 
 # save the model
