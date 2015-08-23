@@ -7,7 +7,7 @@ shinyServer(function(input, output) {
     dataInput <- reactive(predict_word(input$entry))
     
     output$top1 <- renderText({
-        paste("Predicted phrase:", input$entry, dataInput()[1])
+        paste(input$entry, dataInput()[1])
     })
     
     output$text <- renderText({
