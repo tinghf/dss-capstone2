@@ -749,50 +749,59 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>FinalPresentation</h1><p>Tony Ting<br/>14th Aug, 2015</p>
+<h1>FinalPresentation</h1><p>Tony Ting<br/>14th Aug 2015</p>
 
 <div class="slideContent" >
+<p>Data Science Specialization - Capstone Project</p>
+
+<p>Build and evaluate a NLP predictive text model </p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>First Slide</h3>
+<h3>Objective</h3>
 <div class="slideContent" >
-<p>For more details on authoring R presentations click the
-<strong>Help</strong> button on the toolbar.</p>
+<p>The goal of this Capstone Project is to produce a predictive test algorithm in R, that based on certain text that user input the system will predict the next most likely word to be entered, the application can be applied to mobile device to do predictive text input to save user&#39;s time to typing. </p>
 
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Model description</h3>
+<div class="slideContent" >
 <ul>
-<li>Bullet 1</li>
-<li>Bullet 2</li>
-<li>Bullet 3</li>
+<li>A simple <a href="https://en.wikipedia.org/wiki/N-gram">n-gram model</a> was contructed for predicting the next word based on the previous 1, 2, or 3 words.</li>
+<li><a href="https://en.wikipedia.org/wiki/Katz's_back-off_model">Katz back-off</a> is a generative n-gram language model that estimates the conditional probability of a word given its history in the n-gram. </li>
+<li>The model was built and tuned to optimized for the size and runtime, a relatively smaller memory footprint was required to run the data and a Shiny app was created to demonstrate the execution of the model. </li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Slide With Code</h3>
+<h3>Data Processing Pipeline</h3>
 <div class="slideContent" >
-<pre><code class="r">summary(cars)
-</code></pre>
-
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
-</code></pre>
+<ul>
+<li>Sample dataset provided by <a href="https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip">SwiftKey</a> was downloaded and loaded through ReadLines();</li>
+<li>Random sampling performed on dataset to reduce set of training data and provide test data set; </li>
+<li>Sampled data is then cleaned(remove spaces/punctuactions/numbers/profanity words); </li>
+<li>Cleaned data is then feed into n-gram tokenizer to create the relevant n-gram TermDocumentMatrix;</li>
+<li>N-gram data is then feed through a <a href=""https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes</a> model; </li>
+<li>A Shiny app was created to make use of the model data above to perform prediction on user input text; </li>
+</ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Slide With Plot</h3>
-<div class="mediaOnly slideContent" >
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAAsSAAALEgHS3X78AAAI7UlEQVR4nO3d4XaiShAAYXz/l767dxNjUBGYaaanq74/7jnKrFqRASRhuQlpGf0ENIbhoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aFawi/KLDB8w7KKZngow0O1h387ZRg+s+bwy+r2yLIax/BQhodyjodyqx7K8FBdVvWvH2n4cT4eku2zcff3fzF8Isuttezerfrl4ZE7vwZQnOvC315kNvwwV4S/lz+zrIJcMMfHLKtohocyPJThodq36t/uvBk+s25b9aeW1TAdVvXvHmP4zJzjoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8VIe/bOnlx2bUHH5Z3R5ZVuMYHsrwUM7xUG7VQxkeylU9lBt3UAHhvcToDPzEQznHQ7lVD2V4KMNDGR6qfaveS4xOqcNWfcOyGqbDqv7dYwyfmXM8lOGhDA9leCjDQxkeyvBQhocyfEmfz38yfEXLrbWs4adkeKgd57oaviLDQ7mqhzI8lbtzesPwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQ6y/oTc8w9M5OYZnMPwog/+2r+EH2XH6Y/ATcI4fYnj4NcNfw/BU2f5+v+GhDA9leKj28F6hYkrN4ZfV7ZFlNY7hoQwP5Ry/Ldvudzdu1W9Kd8Ctm4Dwla40afiNh/wpXHZVb/jNR7x+e0q8YTVWXC8YHsrwUM7xUO7OQRkeyvBQhocy/EWyHRAw/DXSHQI0/DUMD2V4Kud4pWB4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvAleW1Zph1fAhu+IsNDGZ7KOV5vGH6YsSdjGX6UwadfGn4Uw0MZnso5XgMYfjadVhSGn0yvTQPDT8bwUIanco5XC8MncuWe/b7wy57HHhxaa5cey9sT/uTfITf8QenCn3w6hj8oYfi/t4fnH8MflXKOX5zjSzE8VHv42lehKmvvHP+++9uBDJ9Z8wEcw8/J8FC7DuC8n8dv1ef4bH+QshuP1W8afEZkoIDwXmlyBu3H6pd/Dzg89BTY4W9bb8By3xA4OPQcaqy4Xmj+WrZ4+LIMD7X7yN3bdV7t3bmy3J2DMjyU4aEMD2X4i+w5IJDv1KuIoVn2HALMeLJlwNAshocyPJVzvFIw/FH5vq879YwMf1C+b+jPPSPDH2T41qEnZfjWoWflHN84tIYyfCLuxzN55A7K8FCGp3KOn16+fb41w0fId5TnieEjGB7K8FTO8UrK8Im4O8fkARwow0MZnso5XuEM/+DavW+vLZvFtcfbBh/dM/wPw+++O2zZIQy/++6wZcdwjt97d9iyimZ4KMNDGR7K8FCGhzI8lOEvku0sPMNfI915t+3h/Xv1e9QLv6xujywLYniqcnO84efkHN/uxavP9vl+5lZ9sxfTd7oZ/VlA+EqXGN0DHf7V45K/8m6g4d9/vpO/8n6gc/zy7sc7+0tn67Gq/5Pe8LPpM8e/XLEZPjN356AMD2V4KMNvC9wv8xcqEgs8EuOvUGVm+P5DT8Hw/Yeeg3N896E1VNHw5z5N+b9a6adm+HPz5wRfpvZj+NalJmX41qUmVTO8c/xHRcPrE8O363bqlX/SdCrdTra8dBvD8M0M33HZmRi+47JTcY7vt6yiGR7K8FCGhzI8lOGhDA+FCf+8j0z6Lu4ZJfzzUTHUt+/PDA9leChKeOf4laLhu31JUvbnpWb4bl+L1p0hDL+5lOH7Dx3J8B/VDO8c/1HR8PoEHL7IR/ckbvgqk/VJhocyPBQ3vHN8w91hyypa9vDsj2Wg5OHhE3Gg9vChV6EyfJTm8Mvq9siynxk+SvLwzvFRsodXkORzfKSTK5Mi66DkW/WBTm4+VNnqCAg/yZUmDd9w9/8P+Vd4ujne8A13fz3ib/rpwjvHN9x9f8SrSw6WeH/K6rU7l+zaskU+loE6zPHvHjnwra8yEQequTtn+I8w4V35/1Yz/HNm1wEr84U/+bsSN8P/Ml14+HGXbijhneNXMOH123Th/ej2MV94dQEOz151cMPDNxYMD2V4KG545/iGu8OWVTTDQxkeyvBQhocyPJThoS4LH7jXzN4hP+mq8IHHyeCH4E4yPJThoZzjodyqhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPlT28X8AESR7er1yjGB7K8FDJwzvHR8keXkEqnHqlEwqcbKkzDA9leCjneCi36qHaw097pUm25vDL6vbIshonIPwkV5qE8xMP5RwP5VY9lOGhDA9leCjDQ0WGV2Zx4T//ZMw59pxDHxzb8FWGNjx0aMNDhzY8dGjDQ4c2PHToTOGVl+GhDA9leCjDQxkeyvBQhocyPJThoSIPT348C+T0yN/jBw7dfeyvIWOe9X3s3YPPeFz661VG/Bdfb1zQT9QS9axvxweOCx/X/RYW/mHoCFHhH8Y+8vggcWv6uPDfQwc99ejwR5527Cc+co6PDB8y9Kk1ctjYsVv1k4b/9Y++Y0eGf7zdvUAMw6+HDlyZ/P7H7iW6c1X/YuTQH9csq/rgjbvg/fjuA39tekU86zNje+QOyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOHfKf7OFH95DYq/M8Vf3pavU5Jvv359+X5T/Z0p/vI2fP/e8vL4y4w/N9Wvo1n85W1Yfm5eha/+zhR/eVu+V/X3XzF+uLmVf2eKv7wPfn/Gb+vVQGXFX96GD3N89Xem+Mvbsr1V78ZdcdQ3gPq676hvAPV14xkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4qP8AW9vVagiFEDIAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-2"/> </p>
+<h3>Shiny Applications</h3>
+<div class="slideContent" >
+<ul>
+<li>Application could be found here</li>
+<li>type your desired text phrase into the text input box;</li>
+<li>the Shiny app will return the predicted next word given t he phrase entered; </li>
+</ul>
 
 </div>
 

@@ -1,5 +1,5 @@
 ---
-title: 'Final Report: Exploration Anaylsis for the Capstone Dataset'
+title: 'Data Science Capstone Project'
 author: "Tony Ting"
 date: "July 26, 2015"
 output: html_document

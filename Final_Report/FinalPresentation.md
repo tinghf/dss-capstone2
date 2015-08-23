@@ -3,36 +3,41 @@ FinalPresentation
 author: Tony Ting
 date: 14th Aug 2015
 
+Data Science Specialization - Capstone Project
 
-First Slide
+Build and evaluate a NLP predictive text model 
+
+
+Objective
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+The goal of this Capstone Project is to produce a predictive test algorithm in R, that based on certain text that user input the system will predict the next most likely word to be entered, the application can be applied to mobile device to do predictive text input to save user's time to typing. 
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
-Slide With Code
+Model description
 ========================================================
 
+- A simple <a href="https://en.wikipedia.org/wiki/N-gram">n-gram model</a> was contructed for predicting the next word based on the previous 1, 2, or 3 words.
+- <a href="https://en.wikipedia.org/wiki/Katz's_back-off_model">Katz back-off</a> is a generative n-gram language model that estimates the conditional probability of a word given its history in the n-gram. 
+- The model was built and tuned to optimized for the size and runtime, a relatively smaller memory footprint was required to run the data and a Shiny app was created to demonstrate the execution of the model. 
 
-```r
-summary(cars)
-```
 
-```
-     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
-```
-
-Slide With Plot
+Data Processing Pipeline
 ========================================================
 
-![plot of chunk unnamed-chunk-2](FinalPresentation-figure/unnamed-chunk-2-1.png) 
+- Sample dataset provided by <a href="https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip">SwiftKey</a> was downloaded and loaded through ReadLines();
+- Random sampling performed on dataset to reduce set of training data and provide test data set; 
+- Sampled data is then cleaned(remove spaces/punctuactions/numbers/profanity words); 
+- Cleaned data is then feed into n-gram tokenizer to create the relevant n-gram TermDocumentMatrix;
+- N-gram data is then feed through a <a href=""https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes</a> model; 
+- A Shiny app was created to make use of the model data above to perform prediction on user input text; 
+
+
+Shiny Applications
+========================================================
+
+- Application could be found here
+- type your desired text phrase into the text input box;
+- the Shiny app will return the predicted next word given t he phrase entered; 
+
+
