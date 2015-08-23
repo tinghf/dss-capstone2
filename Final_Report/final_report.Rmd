@@ -1,0 +1,96 @@
+---
+title: 'Final Report: Exploration Anaylsis for the Capstone Dataset'
+author: "Tony Ting"
+date: "July 26, 2015"
+output: html_document
+---
+
+# Background
+In this capstone project we attempt to build a predictive test models like those used by SwiftKey. This report contains the exploratory analsys of the dataset provided by coursera. 
+
+The data set contains 3 files in different languages (each resided in it's own directory), the following is the data files for US English:
+ - en_US.blogs   : collections of blogs, one line for each blog entries;
+ - en_US.news    : collections of internet news stories, one line for each news paragraphs;
+ - en_US.twitter : collections of tweets from twitters; 
+ 
+
+# Data Download 
+
+The dataset is provided by coursera in a zip file format
+
+```{r, eval=FALSE}
+# download and extract dataset
+download.file("https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip", "Coursera-SwiftKey.zip")
+unzip("Coursera-SwiftKey.zip")
+```
+
+```{r}
+
+# list the extracted data file 
+list.files("Coursera-SwiftKey/final", recursive=TRUE)
+
+```
+
+Import the corpus through readLines
+
+```{r}
+
+blogs <- readLines("Coursera-SwiftKey/final/en_US/en_US.blogs.txt", encoding="UTF-8")
+twitter <- readLines("Coursera-SwiftKey/final/en_US/en_US.twitter.txt", encoding="UTF-8")
+# need to read news in binary format, or we will hit error
+con <- file("Coursera-SwiftKey/final/en_US/en_US.news.txt", open="rb")
+news <- readLines(con, encoding="UTF-8")
+close(con)
+rm(con)
+
+```
+
+
+# Summary Statistics
+
+```{r}
+# file size (in MegaBytes/MB)
+file.info("Coursera-SwiftKey/final/en_US/en_US.blogs.txt")$size   / 1024^2
+file.info("Coursera-SwiftKey/final/en_US/en_US.news.txt")$size    / 1024^2
+file.info("Coursera-SwiftKey/final/en_US/en_US.twitter.txt")$size / 1024^2
+```
+
+Require libraries for analysis
+```{r}
+# library for character string analysis
+library(stringi)
+# library for plotting
+library(ggplot2)
+```
+
+General statistics for the character vectors
+```{r}
+stri_stats_general( blogs )
+stri_stats_general( news )
+stri_stats_general( twitter )
+```
+
+Find the word counts per line, plus basic statistics of distribution for all 3 corplus. 
+```{r}
+words_blogs   <- stri_count_words(blogs)
+summary( words_blogs )
+sum(words_blogs)
+qplot(   words_blogs )
+
+words_news    <- stri_count_words(news)
+summary( words_news )
+sum(words_news)
+qplot(   words_news )
+
+words_twitter <- stri_count_words(twitter)
+summary( words_twitter )
+sum(words_twitter)
+qplot(   words_twitter )
+```
+
+# Summary
+-  Size of corplus is around 200MB for blogs, 196MB for news, 159MB for twitter;
+-  lines of corplus is around 899K for blogs, 77K for news, 2360K for twitter;
+-  for approximately the same size of corplus, twitter contains a lot more lines, this is due to the relatively shorter line lengths (since each tweet is limieted to 140 characters);
+-  frequency distribution of words looks similar for blogs and news, while twitter looks quite different, probably due to the same reason;
+

@@ -13,6 +13,7 @@ The data set contains 3 files in different languages (each resided in it’s own
 | import_data.R        | download and import data, generate .rdata for later stages;           |
 | explore_data.R       | perform some exploratory analysis on dataset;                         |
 | create_ngram_df.R    | use RWeka pacakge to create n-gram data frame for further processing; |
+| create_quadgram_df.R | optional, experiment with quad-gram for model training and prediction;|
 | train_model.R        | use naive Bayes classifier from e1071 to train model;                 | 
 | predict_from_model.R | sample tests to predict from model built from above;                  | 
 
