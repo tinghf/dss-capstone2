@@ -1,0 +1,8 @@
+name: text_prediction
+account: tinghf
+server: shinyapps.io
+bundleId: 249174
+url: https://tinghf.shinyapps.io/text_prediction
+when: 1440358622.79568
+asMultiple: FALSE
+asStatic: FALSE

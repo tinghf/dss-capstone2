@@ -19,7 +19,7 @@ shinyUI(
                                          hr(),
                                          h5("Text Input:"),
                                          textInput("entry", 
-                                                   "This Shiny application will predict the next word in the phrase below:",
+                                                   "Input a phrase below and press enter to predict the next word (be patience for initial loading):",
                                                    "input a phrase here"),
                                          br(),
                                          helpText(h5("Note:")),
@@ -54,9 +54,9 @@ shinyUI(
                                          helpText(h5("Help Instruction:")),
                                          helpText("Please switch the panels on the right side to figure out:"),
                                          helpText("- Description on data processing pipeline of the predictive model"),
-                                         helpText("- How does the app work"),
+                                         helpText("- How does the application work"),
                                          hr(),
-                                         h6("This App is built for:"),
+                                         h6("This Application is built for:"),
                                          a("Coursera Data Science Capstone", href="https://www.coursera.org/course/dsscapstone"),
                                          p("class started on 6th July 2015"),
                                          hr(),
@@ -92,10 +92,8 @@ shinyUI(
                                                      br()
                                                      ),
                                             
-                                            tabPanel("App Work-flow",                                                       
+                                            tabPanel("Application Work-flow",                                                       
                                                      h3("Shiny App Prediction Algorithm"),
-                                                     hr(),
-                                                     img(src="work_flow_shiny.png", height = 262, width = 800),
                                                      hr(),
                                                      h4("Pre-process"),
                                                      p("1. Obtain the data from the input box."),
@@ -108,13 +106,8 @@ shinyUI(
                                                      hr(),
                                                      h4("Search pattern"),
                                                      p("Search the pattern from the n-gram model 
-                                                       The algorithm will search the pattern from the 3-grams frequency matrix, 
-                                                       and then return the top predictions. However, 
-                                                       if there is no result, it will automatically search the 2-grams, 
-                                                       and if it still no result, it will search the 1-gram matrix."),
-                                                     hr(),
-                                                     h4("Predict the next single word"),
-                                                     p("The next possible single word will be returned and displayed. ")
+                                                       The algorithm will search the pattern from the frequency matrix, 
+                                                       and then return the it's next word prediction. ")
                                                      )
                                             )
                                         )
