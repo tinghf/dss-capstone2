@@ -31,7 +31,7 @@ Data Processing Pipeline
 Shiny Applications
 ========================================================
 
-- Application could be found <a href="https://tinghf.shinyapps.io/text_prediction">here</a>
+- Application could be found <a href="https://tinghf.shinyapps.io/Shinny">here</a>
 - type your desired text phrase into the text input box;
 - the Shiny app will return the predicted next word given t he phrase entered; 
 
@@ -39,7 +39,7 @@ Shiny Applications
 Project Resources
 ========================================================
 - <a href="http://rpubs.com/tinghf/milestone_report">Milestone report</a>
-- <a href="https://tinghf.shinyapps.io/text_prediction">Shiny App</a>
+- <a href="https://tinghf.shinyapps.io/Shinny">Shiny App</a>
 - <a href="https://github.com/tinghf/dss-capstone2.git">github repo</a>
 - <a href="http://rpubs.com/tinghf/capstone2">Final presentation</a>
 

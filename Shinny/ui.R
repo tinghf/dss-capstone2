@@ -12,9 +12,7 @@ shinyUI(
                                          helpText("1. Type your sentence in the input text field"),
                                          helpText("2. The value will be passed to the model while you are typing."),
                                          helpText("3. Obtain the predictions below."),
-                                         helpText("
-                                                  After the app is 100% loaded you will see the prediction
-                                                  for the default sentence example \"Thanks for stopping by\"
+                                         helpText("After the app is 100% loaded you will see the prediction
                                                   on the right side."),
                                          hr(),
                                          h5("Text Input:"),
